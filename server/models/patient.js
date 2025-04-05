@@ -33,7 +33,11 @@ const patientSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-  }
+  },
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Patient = mongoose.model('Patient', patientSchema);
