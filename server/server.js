@@ -1,6 +1,7 @@
 import express from "express"
 import mongoose from 'mongoose';
 import patientRoutes from './routes/patient.js'
+import userRoutes from './routes/user.js'
 const app=express()
 app.use(express.json());
 mongoose.connect('mongodb://localhost:27017/mediturn')
