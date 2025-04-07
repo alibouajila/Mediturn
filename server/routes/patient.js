@@ -1,9 +1,8 @@
 import express from 'express';
 import Patient from '../models/Patient.js';
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
-
-// Create a new patient (just for test )
 router.post('/register', async (req, res) => {
   try {
     const newPatient = new Patient(req.body);
@@ -13,6 +12,7 @@ router.post('/register', async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+router.use(auth);
 
 // Verify a patient
 router.patch('/verify/:id', async (req, res) => {
@@ -47,22 +47,25 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
 // Get all verified patients
 router.get('/verified', async (req, res) => {
-    try {
-      const verifiedPatients = await Patient.find({ isVerified: true });
-      res.status(200).json(verifiedPatients);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  });
-  // Get all unverified patients
+  try {
+    const verifiedPatients = await Patient.find({ isVerified: true });
+    res.status(200).json(verifiedPatients);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get all unverified patients
 router.get('/unverified', async (req, res) => {
-    try {
-      const verifiedPatients = await Patient.find({ isVerified: false });
-      res.status(200).json(verifiedPatients);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  });
+  try {
+    const verifiedPatients = await Patient.find({ isVerified: false });
+    res.status(200).json(verifiedPatients);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export default router;
