@@ -1,5 +1,5 @@
 import express from 'express';
-import Patient from '../models/Patient.js';
+import Patient from '../models/patient.js';
 import auth from '../middleware/auth.js';
 
 const router = express.Router();
