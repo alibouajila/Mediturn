@@ -1,0 +1,113 @@
+/* RendezVous.css */
+
+.rendezvous-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    padding: 20px;
+  }
+  
+  .rendezvous-form {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .rendezvous-form h2 {
+    margin-bottom: 10px;
+    color: #2d3436;
+    text-align: center;
+  }
+  
+  .rendezvous-form input,
+  .rendezvous-form select,
+  .rendezvous-form textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+  }
+  
+  .rendezvous-form button {
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #6C63FF;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .rendezvous-form button:hover {
+    background-color: #574b90;
+  }
+  
+.rendezvous-form {
+  position: relative;
+}
+
+/*alert box */
+.overlay-alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  background: white;
+  border-radius: 16px;
+  padding: 20px 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  animation: fadeInScale 0.4s ease-out forwards;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0;
+}
+
+/* Success and Error styles */
+.overlay-alert.success {
+  border-left: 6px solid #2ecc71;
+  background-color: #f0fff5;
+  color: #2e7d32;
+}
+
+.overlay-alert.error {
+  border-left: 6px solid #e74c3c;
+  background-color: #fff0f0;
+  color: #c0392b;
+}
+
+/* Icon style */
+.overlay-alert .icon {
+  font-size: 1.8rem;
+}
+
+/* Animation */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
