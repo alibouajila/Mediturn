@@ -12,11 +12,11 @@ mongoose.connect('mongodb://localhost:27017/mediturn')
 
 
   //Routes
-app.use('/patients', patientRoutes);
+  app.use('/patients', patientRoutes);
+  app.use('/users', userRoutes);  
 
 
 
-
-app.listen(3000,()=>{
+app.listen(3001,()=>{
   console.log("Server is running on port")
 })

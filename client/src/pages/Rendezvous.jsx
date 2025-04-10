@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RendezVous.css';
-
 function RendezVous() {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -12,18 +12,18 @@ function RendezVous() {
   });
 
   const [message, setMessage] = useState('');
-
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
-    setTimeout(() => setMessage(''), 2000);
+    setTimeout(() => setMessage(''), 3500);
     e.preventDefault();
-    setMessage('');
+    setMessage('');  
     try {
-        const res = await fetch('http://localhost:3000/patients/register', {
+        const res = await fetch('http://localhost:3001/patients/register', {
             method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -40,6 +40,9 @@ function RendezVous() {
           phoneNumber: '',
           address: '',
         });
+        setTimeout(() => {
+          navigate('/about');
+        }, 4000);
       } else {
         setMessage(data.message || 'Une erreur est survenue.');
       }
