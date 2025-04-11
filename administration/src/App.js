@@ -1,17 +1,13 @@
-
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome to the Administration App</h1>
-      </header>
-      <main>
-        <p>main </p>
-      </main>
-      <footer>
-        <p>&copy; 2023 Administration App</p>
-      </footer>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<div>Home</div>} />
+      </Routes>
+    </Router>
   );
 }
 

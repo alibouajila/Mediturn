@@ -41,7 +41,7 @@ function RendezVous() {
           address: '',
         });
         setTimeout(() => {
-          navigate('/about');
+          navigate('/Instructions'); 
         }, 4000);
       } else {
         setMessage(data.message || 'Une erreur est survenue.');
