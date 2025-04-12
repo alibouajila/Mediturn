@@ -1,0 +1,70 @@
+/* Login.css */
+.login-container {
+    height: 320px;
+    max-width: 300px;
+    margin: 50px auto;
+    margin-top: 24vh;
+    padding: 30px;
+    border-radius: 20px;
+    background: #f4f4f4;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #211C84;
+  }
+  
+  .message-success {
+    text-align: center;
+    color: green;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .message-error {
+    text-align: center;
+    color: #e63946;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .login-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-container input {
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 2px solid #B5A8D5;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .login-container input:focus {
+    border-color: #4D55CC;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(77, 85, 204, 0.2);
+  }
+  
+  .login-container button {
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 12px;
+    background-color: #4D55CC;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .login-container button:hover {
+    background-color: #211C84;
+  }
+  

@@ -1,15 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-
 const Navbar = () => {
+  const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem('token'); 
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   return (
     <header className="navbar">
       <div className="navbar-container">
-        <div><Link to="/" className="navbar-logo">Mediturn</Link> </div>
+        <div>
+          <Link to="/" className="navbar-logo">Mediturn</Link>
+        </div>
         <ul className="navbar-links">
-          <li><Link to="/" className="navbar-link">Home</Link></li>
-          <li><Link to="/about" className="navbar-link">About Us</Link></li>
+          {!isLoggedIn ? (
+            <>
+              <li><Link to="/signup" className="navbar-link">sign up</Link></li>
+              <li><Link to="/login" className="navbar-link">login</Link></li>
+            </>
+          ) : (
+            <li>
+            <img
+              src="../../assets/logout.png"
+              alt="Logout"
+              className="logout-icon"
+              onClick={handleLogout}
+            />
+          </li>
+          )}
         </ul>
       </div>
     </header>

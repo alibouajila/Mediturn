@@ -43,6 +43,18 @@
     .navbar-link:hover {
       color: #B5A8D5;
     }
+    .logout-icon {
+      width: 35px;
+      height: 35px;
+      font-weight: bolder;
+      cursor: pointer;
+      transition: opacity 0.2s ease-in-out;
+    }
+    
+    .logout-icon:hover {
+      opacity: 0.7;
+    }
+    
     
     /* Responsive */
     @media (max-width: 768px) {
