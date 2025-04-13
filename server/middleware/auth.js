@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
-const JWT_SECRET = 'AR2904'; 
 
-const auth = (req, res, next) => {
+const JWT_SECRET = 'AR2904';
+
+const auth = (roles = []) => (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -11,8 +12,13 @@ const auth = (req, res, next) => {
   const token = authHeader.split(' ')[1];
 
   try {
-    const decoded = jwt.verify(token,JWT_SECRET); 
-    req.user = decoded; 
+    const decoded = jwt.verify(token, JWT_SECRET);
+    req.user = decoded;
+
+    if (roles.length && !roles.includes(req.user.role)) {
+      return res.status(403).json({ message: 'Forbidden: You do not have permission to perform this action' });
+    }
+
     next();
   } catch (err) {
     res.status(403).json({ message: 'Invalid or expired token' });

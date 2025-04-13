@@ -1,8 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
-
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
+  const navigate=useNavigate()
+   useEffect(() => {
+      const token = localStorage.getItem('token');
+      const role = localStorage.getItem('role');
+  
+      if (token && role) {
+        if (role === 'assistant') {
+          navigate('/assistant');
+        } else if (role === 'doctor') {
+          navigate('/doctor');
+        }
+      }
+    }, [navigate]);
   return (
     <div className="home-container">
       <div className="home-content">

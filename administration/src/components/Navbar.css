@@ -5,8 +5,9 @@
       right: 0%;
       left: 0%;
       background-color: #2c2b40;
-      padding: 1rem 2rem;
+      padding: 1rem 1rem;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-height: 50px
     }
     
     .navbar-container {
@@ -44,8 +45,8 @@
       color: #B5A8D5;
     }
     .logout-icon {
-      width: 35px;
-      height: 35px;
+      width: 38px;
+      height: 38px;
       font-weight: bolder;
       cursor: pointer;
       transition: opacity 0.2s ease-in-out;

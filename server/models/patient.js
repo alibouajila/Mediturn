@@ -38,6 +38,11 @@ const patientSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  doctor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', 
+    default: null,
+  },
 });
 
 const Patient = mongoose.model('Patient', patientSchema);

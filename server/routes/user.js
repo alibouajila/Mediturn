@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import User from '../models/user.js';
 
 const router = express.Router();
-const JWT_SECRET = 'AR2904'; 
+const JWT_SECRET = 'AR2904';
 
 // 🔐 Register new user (doctor or assistant)
 router.post('/register', async (req, res) => {
@@ -61,4 +61,15 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+// 👨‍⚕️ Get all doctors (filtered by role)
+router.get('/doctors', async (req, res) => {
+  try {
+    const doctors = await User.find({ role: 'doctor' }); 
+    res.status(200).json(doctors);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 export default router;

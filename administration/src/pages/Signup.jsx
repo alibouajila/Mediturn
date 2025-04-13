@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './signup.css';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 const Signup = () => {
     const navigate = useNavigate();
@@ -52,7 +53,18 @@ const Signup = () => {
       setIsSuccess(false);
     }
   };
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
 
+    if (token && role) {
+      if (role === 'assistant') {
+        navigate('/assistant');
+      } else if (role === 'doctor') {
+        navigate('/doctor');
+      }
+    }
+  }, [navigate]);
   return (
     <div className="signup-container">
       <h2>Sign Up</h2>

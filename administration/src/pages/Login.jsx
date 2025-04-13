@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import './login.css';
 const Login = () => {
     const navigate = useNavigate();
@@ -29,13 +30,29 @@ const Login = () => {
       setMessage(res.data.message);
       setIsSuccess(true);
       localStorage.setItem('token', res.data.token);
-      navigate('/dashboard');
+      localStorage.setItem('role', res.data.role); 
+      if(res.data.role === 'assistant') {
+        navigate('/assistant');
+      } else if(res.data.role === 'doctor') {
+        navigate('/doctor');
+      }
     } catch (err) {
       setMessage(err.response?.data?.message || 'Login failed');
       setIsSuccess(false);
     }
   };
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
 
+    if (token && role) {
+      if (role === 'assistant') {
+        navigate('/assistant');
+      } else if (role === 'doctor') {
+        navigate('/doctor');
+      }
+    }
+  }, [navigate]);
   return (
     <div className="login-container">
       <h2>Login</h2>
