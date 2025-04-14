@@ -21,8 +21,10 @@ const auth = (roles = []) => (req, res, next) => {
 
     next();
   } catch (err) {
+    console.error("JWT verification error:", err); // Log the error
     res.status(403).json({ message: 'Invalid or expired token' });
   }
 };
+
 
 export default auth;

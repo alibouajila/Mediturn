@@ -1,0 +1,19 @@
+.delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+    position: relative;
+    left: 70%;
+    width: 100px;
+  }
+  
+  .delete-button:hover {
+    background-color: #e60000;
+  }
+  .patients-list {
+    margin-top: 10vh;
+  }

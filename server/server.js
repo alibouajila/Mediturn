@@ -18,5 +18,5 @@ mongoose.connect('mongodb://localhost:27017/mediturn')
 
 
 app.listen(3001,()=>{
-  console.log("Server is running on port")
+  console.log("Server is running on port 3001")
 })

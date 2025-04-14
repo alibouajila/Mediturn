@@ -73,14 +73,22 @@ router.get('/doctors', async (req, res) => {
   }
 });
 // Get all patients for a specific doctor
-router.get('/by-doctor/:doctorId', auth(), async (req, res) => {
+router.get('/my-patients', auth(['doctor']), async (req, res) => {
   try {
-    const patients = await Patient.find({ doctor: req.params.doctorId });
-    res.status(200).json(patients);
+    const doctorId = req.user.id;
+    const doctor = await User.findById(doctorId).populate('patients');
+    if (!doctor) {
+      return res.status(404).json({ message: 'Doctor not found.' });
+    }
+
+    res.status(200).json(doctor.patients);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.error(err);
+    res.status(500).json({ message: 'Failed to retrieve patients.' });
   }
 });
+
+
 // ✅ Get doctor by ID
 router.get('/:id', auth(), async (req, res) => {
   try {
