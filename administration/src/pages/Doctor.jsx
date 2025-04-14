@@ -56,9 +56,9 @@ const Doctor = () => {
       ) : (
         <>
           {patients.length === 0 ? (
-            <p>No patients assigned to you yet.</p>
+            <p style={{textAlign:"center",marginTop:"30vh"}}>No patients assigned to you yet.</p>
           ) : (
-            <div className="patients-list">
+            <div className="patients-list" id='patients-listt'>
               {patients.map((patient) => (
                 <div key={patient._id} className="patient-card">
                   <h3>{patient.fullName}</h3>

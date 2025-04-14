@@ -60,13 +60,19 @@ const Assistant = () => {
       await axios.patch('http://localhost:3001/users/clear-all', {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
+  
       toast.success('All doctor queues have been cleared!');
+      
+      // Refresh patient list after clearing
+      fetchPatients();
+  
       setLoading(false);
     } catch (err) {
       setLoading(false);
       toast.error('Failed to clear doctor queues.');
     }
   };
+  
   
   const handleVerifyClick = (id) => {
     setCurrentPatientId(id);
@@ -152,8 +158,10 @@ const Assistant = () => {
             {patients.map((patient) => (
               <div key={patient._id} className="patient-card">
                 <h3>{patient.fullName}</h3>
-                <p>CIN: {patient.cin}</p>
-                <p>Phone: {patient.phone}</p>
+                <p>CIN: {patient.CIN}</p>
+                  <p>Phone: {patient.phoneNumber}</p>
+<p>Date of Birth: {new Date(patient.dateOfBirth).toLocaleDateString('en-US')}</p>
+                  <p>Gender: {patient.gender}</p>
                 {patient.doctor && (
                   <p className="assigned-doctor">Assigned to: Dr. {patient.doctor.fullName}</p>
                 )}

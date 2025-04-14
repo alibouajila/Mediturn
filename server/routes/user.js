@@ -62,7 +62,6 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 // 👨‍⚕️ Get all doctors (filtered by role)
 router.get('/doctors', async (req, res) => {
   try {
@@ -87,8 +86,6 @@ router.get('/my-patients', auth(['doctor']), async (req, res) => {
     res.status(500).json({ message: 'Failed to retrieve patients.' });
   }
 });
-
-
 // ✅ Get doctor by ID
 router.get('/:id', auth(), async (req, res) => {
   try {
@@ -111,6 +108,19 @@ router.patch('/clear-all', auth(), async (req, res) => {
   } catch (err) {
     console.error('Error clearing queues:', err);
     res.status(500).json({ message: 'Failed to clear doctor queues.' });
+  }
+});
+// Get all patients for a specific doctor
+router.get('/by-doctor/:doctorId', auth(), async (req, res) => {
+  try {
+    const { doctorId } = req.params;
+
+    const patients = await Patient.find({ doctor: doctorId });
+
+    res.status(200).json(patients);
+  } catch (err) {
+    console.error('Error fetching patients for doctor:', err);
+    res.status(500).json({ message: 'Failed to retrieve patients for this doctor.' });
   }
 });
 
