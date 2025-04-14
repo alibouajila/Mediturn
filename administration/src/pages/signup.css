@@ -5,7 +5,7 @@
   margin-top: 17vh;
   padding: 30px;
   border-radius: 20px;
-  background: #f4f4f4;
+  background: linear-gradient(135deg, #f9f9ff, #e9ecff);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', sans-serif;
 }
