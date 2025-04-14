@@ -2,7 +2,8 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import User from '../models/user.js';
-
+import auth from '../middleware/auth.js';
+import Patient from '../models/patient.js'; // Assuming you have a Patient model
 const router = express.Router();
 const JWT_SECRET = 'AR2904';
 
@@ -69,6 +70,39 @@ router.get('/doctors', async (req, res) => {
     res.status(200).json(doctors);
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+});
+// Get all patients for a specific doctor
+router.get('/by-doctor/:doctorId', auth(), async (req, res) => {
+  try {
+    const patients = await Patient.find({ doctor: req.params.doctorId });
+    res.status(200).json(patients);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+// ✅ Get doctor by ID
+router.get('/:id', auth(), async (req, res) => {
+  try {
+    const doctor = await User.findById(req.params.id);
+    if (!doctor || doctor.role !== 'doctor') {
+      return res.status(404).json({ message: 'Doctor not found' });
+    }
+    res.status(200).json(doctor);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+router.patch('/clear-all', auth(), async (req, res) => {
+  try {
+    await User.updateMany({ role: 'doctor' }, { $set: { patients: [] } });
+    // Delete all patients
+    await Patient.deleteMany({});
+
+    res.status(200).json({ message: 'All doctor queues cleared successfully.' });
+  } catch (err) {
+    console.error('Error clearing queues:', err);
+    res.status(500).json({ message: 'Failed to clear doctor queues.' });
   }
 });
 

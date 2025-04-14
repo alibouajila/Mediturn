@@ -1,10 +1,10 @@
 import express from 'express';
 import Patient from '../models/patient.js';
 import auth from '../middleware/auth.js';
-import Doctor from '../models/user.js'; // import Doctor/User model if not already
+import Doctor from '../models/user.js'; 
 const router = express.Router();
 
-// Register a new patient (no authentication required)
+// Register a new patient 
 router.post('/register', async (req, res) => {
   try {
     const newPatient = new Patient(req.body);
@@ -45,7 +45,7 @@ router.patch('/verify/:id', auth(['doctor', 'assistant']), async (req, res) => {
   }
 });
 
-// Delete a patient (only doctors or assistants can delete patients)
+// Delete a patient
 router.delete('/:id', auth(['doctor', 'assistant']), async (req, res) => {
   try {
     const deletedPatient = await Patient.findByIdAndDelete(req.params.id);
@@ -60,7 +60,7 @@ router.delete('/:id', auth(['doctor', 'assistant']), async (req, res) => {
   }
 });
 
-// Get all verified patients (accessible to any authenticated user)
+// Get all verified patients 
 router.get('/verified', auth(), async (req, res) => {
   try {
     const verifiedPatients = await Patient.find({ isVerified: true });
@@ -70,7 +70,7 @@ router.get('/verified', auth(), async (req, res) => {
   }
 });
 
-// Get all unverified patients (accessible to any authenticated user)
+// Get all unverified patients
 router.get('/unverified', auth(), async (req, res) => {
   try {
     const unverifiedPatients = await Patient.find({ isVerified: false });
@@ -81,3 +81,4 @@ router.get('/unverified', auth(), async (req, res) => {
 });
 
 export default router;
+  

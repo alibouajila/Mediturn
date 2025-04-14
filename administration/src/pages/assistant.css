@@ -1,45 +1,78 @@
-/* Container Styles */
-.assistant-container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  margin-top: 30vh;
-  padding: 1rem 2rem;
-  background: #f9f9ff;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+body {
+  margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  background: #f0f1ff;
+  color: #333;
 }
 
-.assistant-container h2 {
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.assistant-container {
+  padding: 2rem;
+  width: 100%;
+}
+
+h2, h3 {
   color: #211C84;
-  font-size: 28px;
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Doctor Queues Section */
+.doctor-queues-section {
+  margin-bottom: 2rem;
+}
+
+.doctor-queue-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.doctor-queue-item button {
+  background: #4D55CC;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.doctor-queue-item button:hover {
+  background: #211C84;
 }
 
 /* Messages */
 .error-message {
   color: red;
-  margin-bottom: 1rem;
 }
 
 .success-message {
   color: green;
-  margin-bottom: 1rem;
 }
 
-/* Patient List */
+/* Patients List */
 .patients-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .patient-card {
   background: white;
-  border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.2rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
 }
 
@@ -48,16 +81,22 @@
 }
 
 .patient-card h3 {
-  margin: 0 0 0.5rem;
   color: #4D55CC;
+  margin-bottom: 0.5rem;
 }
 
 .patient-card p {
-  margin: 0.2rem 0;
   font-size: 14px;
-  color: #444;
+  margin: 0.3rem 0;
 }
 
+.assigned-doctor {
+  font-style: italic;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Actions */
 .actions {
   margin-top: 1rem;
   display: flex;
@@ -66,11 +105,21 @@
 
 .actions button {
   padding: 0.5rem 1rem;
-  border: none;
-  font-weight: 500;
   border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s ease;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.actions .delete-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+.actions button:not(.delete-btn) {
+  background: #211C84;
+  color: white;
 }
 
 .actions button:hover {
@@ -78,28 +127,18 @@
 }
 
 .actions button:disabled {
-  background-color: #ccc;
+  background: #ccc;
   cursor: not-allowed;
 }
 
-.actions .delete-btn {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.actions button:not(.delete-btn) {
-  background-color: #211C84;
-  color: white;
-}
-
-/* Modal Styles */
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,25 +147,24 @@
 
 .modal {
   background: white;
-  padding: 2rem;
   border-radius: 12px;
-  width: 320px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 340px;
+  padding: 2rem;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.2);
   animation: fadeIn 0.3s ease;
 }
 
 .modal h3 {
-  margin-bottom: 1rem;
   color: #211C84;
-  font-size: 20px;
+  margin-bottom: 1rem;
 }
 
 .modal select {
   width: 100%;
-  padding: 0.5rem;
-  font-size: 16px;
-  border-radius: 6px;
+  padding: 0.6rem;
+  border-radius: 8px;
   border: 1px solid #ccc;
+  font-size: 15px;
   margin-bottom: 1.2rem;
 }
 
@@ -137,11 +175,10 @@
 
 .modal-actions button {
   padding: 0.5rem 1rem;
-  font-size: 15px;
-  border: none;
   border-radius: 6px;
-  cursor: pointer;
   font-weight: 500;
+  border: none;
+  cursor: pointer;
 }
 
 .modal-actions button:first-child {
@@ -154,6 +191,123 @@
   color: black;
 }
 
+/* Dropdown */
+.dropdown-section {
+  text-align: center;
+  position: relative;
+  margin-bottom: 2rem;
+  margin-top: 10vh;
+}
+
+.dropdown-toggle {
+  background-color: #211C84;
+  color: white;
+  padding: 0.7rem 1.4rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dropdown-toggle:hover {
+  background-color: #4D55CC;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left:40%;
+  width: 100%;
+  max-width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0ff;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4D55CC;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  animation: slideIn 0.4s ease, fadeOut 0.5s ease 2.5s forwards;
+}
+
+.toast.error {
+  background-color: #e74c3c;
+}
+.end-day-btn {
+  background-color: #211C84;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: absolute;
+  left: 1%;
+  top: 20%;
+  border-radius: 3%;
+  border: solid black 2px;
+  }
+
+.end-day-btn:hover {
+  background-color: #4D55CC;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
