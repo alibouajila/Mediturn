@@ -62,7 +62,7 @@ h2, h3 {
 
 /* Patients List */
 .patients-list {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
   margin-top: 1rem;
@@ -76,6 +76,7 @@ h2, h3 {
   padding: 1.2rem;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
+  width: 300px;
 }
 
 .patient-card:hover {
