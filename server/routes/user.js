@@ -45,7 +45,9 @@ router.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
       return res.status(401).json({ message: 'Invalid email or password' });
-
+if(!user.isVerified ){
+  return res.status(401).json({ message: 'User not verified' });
+}
     const token = jwt.sign(
       { id: user._id, role: user.role },
       JWT_SECRET,
