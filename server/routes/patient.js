@@ -44,7 +44,6 @@ router.patch('/verify/:id', auth(['doctor', 'assistant']), async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 // Delete a patient
 router.delete('/:id', auth(['doctor', 'assistant']), async (req, res) => {
   try {

@@ -9,14 +9,14 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #4D55CC, #B5A8D5);
+    background: linear-gradient(135deg, #ccccfc, #9a9dab);
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
   .home-content {
     text-align: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #2f3040, #67698d);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);

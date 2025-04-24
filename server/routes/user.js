@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import User from '../models/user.js';
 import auth from '../middleware/auth.js';
-import Patient from '../models/patient.js'; // Assuming you have a Patient model
+import Patient from '../models/patient.js';
 const router = express.Router();
 const JWT_SECRET = 'AR2904';
 
