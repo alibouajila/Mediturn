@@ -55,7 +55,7 @@ const Login = () => {
   }, [navigate]);
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>Se connecter</h2>
       {message && (
         <p className={isSuccess ? 'message-success' : 'message-error'}>
           {message}
@@ -65,7 +65,7 @@ const Login = () => {
         <input
           type="email"
           name="email"
-          placeholder="Email Address"
+          placeholder="Email"
           value={formData.email}
           onChange={handleChange}
           required
@@ -73,12 +73,12 @@ const Login = () => {
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Mot de passe"
           value={formData.password}
           onChange={handleChange}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit">Se connecter</button>
       </form>
     </div>
   );

@@ -20,8 +20,8 @@ const Navbar = () => {
         <ul className="navbar-links">
           {!isLoggedIn ? (
             <>
-              <li><Link to="/signup" className="navbar-link">sign up</Link></li>
-              <li><Link to="/login" className="navbar-link">login</Link></li>
+              <li><Link to="/signup" className="navbar-link">S'inscrire</Link></li>
+              <li><Link to="/login" className="navbar-link">Se connecter</Link></li>
             </>
           ) : (
             <li>

@@ -67,7 +67,7 @@ const Signup = () => {
   }, [navigate]);
   return (
     <div className="signup-container">
-      <h2>Sign Up</h2>
+      <h2>S'inscrire</h2>
       {message && (
         <p className={isSuccess ? 'message-success' : 'message-error'}>
           {message}
@@ -77,7 +77,7 @@ const Signup = () => {
         <input
           type="text"
           name="fullName"
-          placeholder="Full Name"
+          placeholder="Nom"
           value={formData.fullName}
           onChange={handleChange}
           required
@@ -85,7 +85,7 @@ const Signup = () => {
         <input
           type="email"
           name="email"
-          placeholder="Email Address"
+          placeholder="Email"
           value={formData.email}
           onChange={handleChange}
           required
@@ -93,7 +93,7 @@ const Signup = () => {
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Mot de passe"
           value={formData.password}
           onChange={handleChange}
           required
@@ -101,16 +101,16 @@ const Signup = () => {
         <input
           type="password"
           name="confirmPassword"
-          placeholder="Confirm Password"
+          placeholder="Confirmer le mot de passe"
           value={formData.confirmPassword}
           onChange={handleChange}
           required
         />
         <select name="role" value={formData.role} onChange={handleChange}>
-          <option value="doctor">Doctor</option>
+          <option value="doctor">Docteur</option>
           <option value="assistant">Assistant</option>
         </select>
-        <button type="submit">Register</button>
+        <button type="submit">S'inscrire</button>
       </form>
     </div>
   );
