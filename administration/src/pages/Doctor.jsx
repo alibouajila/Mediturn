@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./doctor.css"
 const Doctor = () => {
@@ -48,7 +48,6 @@ const Doctor = () => {
 
   return (
     <div className="doctor-dashboard">
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <h2>Doctor Dashboard</h2>
 
       {loading ? (

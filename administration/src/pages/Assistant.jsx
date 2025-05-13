@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './assistant.css';
-
+import { toast } from 'react-toastify';
 const Assistant = () => {
   const navigate = useNavigate();
   const [patients, setPatients] = useState([]);
@@ -123,8 +121,6 @@ const Assistant = () => {
 
   return (
     <div className="page-wrapper">
-      
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <div className="assistant-container">
         <div className="dropdown-section">
           <button className="dropdown-toggle" onClick={() => setShowDoctorDropdown(prev => !prev)}>
